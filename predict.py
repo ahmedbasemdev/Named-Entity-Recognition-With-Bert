@@ -4,11 +4,18 @@ import torch
 import config
 from model import NerModel
 from dataset import EntityDataset
+import sys
 
 if __name__ == '__main__':
 
+    sentence = " "
+    try:
+        sentence = str(sys.argv[1])
+    except:
+        sentence = "Hello this egypt the country of ahmed "
+
     meta_data = joblib.load("meta.bin")
-    tag_encoder =meta_data['tag_encoder']
+    tag_encoder = meta_data['tag_encoder']
     pos_encoder = meta_data['pos_encoder']
     num_tags = len(list(tag_encoder.classes_))
     num_pos = len(pos_encoder.classes_)
@@ -16,10 +23,8 @@ if __name__ == '__main__':
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     model = NerModel(num_tags, num_pos)
-    #model = model.load_state_dict(torch.load(config.MODEL_PATH))
+    model = model.load_state_dict(torch.load(config.MODEL_PATH))
     model = model.to(device)
-
-    sentence = "Hello this egypt the country of ahmed "
 
     tokenized_sentence = config.TOKENZIER.encode(sentence)
 
@@ -51,8 +56,3 @@ if __name__ == '__main__':
             pos.argmax(2).cpu().numpy().reshape(-1)
         )[:len(tokenized_sentence)]
     )
-
-
-
-
-    
