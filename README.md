@@ -18,7 +18,10 @@ medical codes, time expressions, quantities, monetary values, percentages, etc.
 `!mkdir data`        
 `!mv ner_dataset.csv data/ner_dataset.csv`    
 - traning model     
-`!python train.py`
+`!python train.py`      
+
+# Testing 
+`!python predict.py "this is egypt"`
 
 
 
