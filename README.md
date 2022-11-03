@@ -9,14 +9,14 @@ medical codes, time expressions, quantities, monetary values, percentages, etc.
 - PyTorch
 - Bert Transformer pre-trained
 
-# Training 
-1. Modules
+# Training    
+1. Modules    
 `pip install transformers`    
 - Download Dataset    
   `!gdown 1MqhuH7pGn9tcIHSkHwLZomAIVh4aqO-7`    
 - move dataset into data folder   
-`!mkdir data    
-!mv ner_dataset.csv data/ner_dataset.csv`   
+`!mkdir data`        
+`!mv ner_dataset.csv data/ner_dataset.csv`    
 - traning model     
 `!python train.py`
 
